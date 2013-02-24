@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- intancia o include para obter a connection string -->
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+
+<head>
+    <title> Portal da Transpar?ncia - SERVIDORES DO PODER EXECUTIVO FEDERAL - POR NOME DO SERVIDOR </title>
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=iso-8859-1"/>
+    <meta name="robots" content="noindex, nofollow"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/geral.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/cabecalho.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/consultas.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/cabecalhoPrint.css" media="print"/>
+    <link rel="stylesheet" type="text/css" href="../css/consultasPrint.css" media="print"/>
+</head>
+
+<body>
+<div id="site">
+
+<script type="text/javascript" language="JavaScript">
+    function navega(pagina) {
+
+        var paginaInicial = 1;
+        var paginaFinal = 41369;
+        var paginaAtual = 1;
+        var strUrl = "/servidores/Servidor-ListaServidores.asp?Ordem=2&paramDesc=1"
+
+
+        if (pagina == paginaAtual || pagina == '') {
+            document.paginacao.numeroPagina.value = '';
+        }
+        else {
+            if (isNaN(pagina) || (pagina < paginaInicial) || (pagina > paginaFinal)) {
+                alert('Pagina inv?lida');
+                document.paginacao.numeroPagina.value = '';
+            }
+            else {
+                strUrl += '&Pagina=' + pagina;
+                window.location = strUrl;
+            }
+        }
+        return false
+    }
+
+    function pesquisa(texto, tipoPesquisa) {
+
+        var strUrl = "/servidores/Servidor-ListaServidores.asp?Ordem=2&paramDesc=1"
+
+        if (!isNaN(texto) && texto.length < 11 && texto.length >= 1 && tipoPesquisa == 'NomeOuCpf') {
+
+            alert('Pesquisa parcial por CPF n?o permitida');
+            document.paginacao.numeroPagina.value = '';
+
+        } else {
+
+            strUrl = strUrl + '&Pagina=1&TextoPesquisa=' + escape(texto)
+            window.location = strUrl;
+
+        }
+    }
+</script>
+
+<noscript>Script de navega??o</noscript>
+
+<script type="text/javascript" language="JavaScript">
+    if (window != top) top.location.href = location.href;
+
+    function comboChange(comoBox, usado) {
+        window.open(comoBox.options[comoBox.selectedIndex].value);
+        if (usado) comoBox.selectedIndex = 0;
+
+    }
+</script>
+
+<noscript>Script para abertura de nova janela</noscript>
+
+<div id="presidencia">
+
+    <a href="http://www.cgu.gov.br" target="_blank" style="float:left; width:64%">
+        <!-- style margin-bottom:-4px == HACK IE6 -->
+        <img src="/images/cgu_logo.gif" style="border-style: none; margin-bottom:-4px;"
+             alt="Presid?ncia da Republica - Controladoria Geral da Uni?o"/>
+    </a>
+
+
+    <div style="float:left; width:23.5%;">
+        <select name="sltVoce" id="sltVoce" title="Paginas do Governo Federal" class="pr" tabindex="1"
+                onchange="comboChange(this,1)" size="1">
+            <option value="" selected="selected">Destaques do Governo</option>
+            <option value="http://www.brasil.gov.br">Portal do Governo Federal</option>
+            <option value="http://www.e.gov.br">Portal de Servi?os do Governo</option>
+            <option value="http://www.agenciabrasil.gov.br">Portal da Ag?ncia de Not?cias</option>
+            <option value="http://www.brasil.gov.br/emquestao">Em Quest?o</option>
+            <option value="http://www.fomezero.gov.br">Programa Fome Zero</option>
+        </select>
+    </div>
+
+    <!-- <a href="http://www.brasil.gov.br" target="_blank" style="float:left; width:12.5%;"> -->
+    <!-- style margin-bottom:-4px == HACK IE6 -->
+    <!-- <img src="/images/brasil.gif" style="margin-top:2px; margin-bottom:-4px;" alt="Brasil - Um pais de todos"/> -->
+    <!-- </a> -->
+
+</div>
+
+
+<!-- Testeira do Portal da Transpar?ncia -->
+<div id="logo">
+    <a href="http://www.portaldatransparencia.gov.br" title="Portal da Transpar?ncia">
+        <h1>
+            <img src="/images/bandeira.png" alt="Portal da Transpar?ncia do Governo Federal"/>
+        </h1>
+    </a>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+
+    function redirAcessoRapido() {
+
+        var sel = document.getElementById('linksAcessoRapido');
+        var opt = sel.options[sel.selectedIndex];
+
+        // Apenas redireciona se n?o for um link "fake" (#)
+        if (opt.value != "#") {
+            // Se possui um "+" indicando para abrir em nova janela...
+            if (opt.value.indexOf("+") == 0) {
+                window.open(opt.value.substring(1)); // ... abre em nova janela (desconsiderando o "+")
+            }
+            else // Se n?o possui...
+            {
+                window.location = opt.value; // ... abre na mesma janela
+            }
+        }
+
+    }
+
+</script>
+
+<!-- Combo de acesso r?pido -->
+<div id="acesso-rapido">
+
+    <div class="conteudo">
+        <h2>
+            <label for="linksAcessoRapido">Acesso r?pido</label>
+        </h2>
+        <select id="linksAcessoRapido">
+            <option value="#">Selecione...</option>
+            <optgroup label="CONSULTAS">
+                <option value="http://www.portaldatransparencia.gov.br/Despesas.asp">Despesas</option>
+                <option value="http://www.portaldatransparencia.gov.br/receitas">Receitas</option>
+                <option value="http://www.portaldatransparencia.gov.br/convenios">Conv?nios</option>
+                <option value="http://www.portaldatransparencia.gov.br/ceis">Empresas Sancionadas</option>
+                <option value="http://www.portaldatransparencia.gov.br/servidores">Servidores</option>
+            </optgroup>
+            <optgroup label="GR?FICOS E DOWNLOADS">
+                <option value="http://www.portaldatransparencia.gov.br/planilhas/">Download de Consultas</option>
+                <option value="http://www.portaldatransparencia.gov.br/graficos/">Portal em Gr?ficos</option>
+            </optgroup>
+            <optgroup label="INFORMA??ES">
+                <option value="http://www.portaldatransparencia.gov.br/sobre">Sobre o Portal</option>
+                <option value="http://www.portaldatransparencia.gov.br/sobre/Origem.asp">Dados do Portal</option>
+                <option value="http://www.portaldatransparencia.gov.br/aprendaMais">Aprenda Mais</option>
+                <option value="http://www.portaldatransparencia.gov.br/noticias">Not?cias</option>
+                <option value="http://www.portaldatransparencia.gov.br/controleSocial">Controle Social</option>
+                <option value="http://www.portaldatransparencia.gov.br/licitacoesecontratos/">Licita??es e Contratos
+                </option>
+            </optgroup>
+            <optgroup label="SERVI?OS">
+                <option value="http://www.portaldatransparencia.gov.br/convenios/ConveniosFormulario.asp">Informa??es
+                    sobre conv?nios
+                </option>
+                <option value="http://www.portaldatransparencia.gov.br/rede/">Rede de Transpar?ncia</option>
+                <option value="http://www1.transparencia.gov.br/">P?ginas de Transpar?ncia</option>
+                <option value="http://br.transparencia.gov.br/">Estados e Munic?pios</option>
+                <option value="+http://www.cgu.gov.br/olhovivo/">Programa Olho Vivo</option>
+                <option value="+http://www.portalzinho.cgu.gov.br/">Portal Crian?a Cidad?</option>
+            </optgroup>
+        </select>
+        <a href="javascript: redirAcessoRapido();">OK</a>
+    </div>
+    <div class="borda"></div>
+</div>
+
+<!-- Links de navega??o -->
+<div id="navegacao">
+    <ul>
+        <li><a href="http://www.portaldatransparencia.gov.br/faleConosco/">Fale conosco</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/glossario/">Gloss?rio</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/faleConosco/Perguntas.asp">Perguntas Freq?entes</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/links/">Links</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/manual/">Manual de Navega??o</a></li>
+    </ul>
+</div>
+
+
+<p class="caminho">
+
+    <span class="rotulo">Voc? est? em:</span>
+    <br/>
+		<span class="passos">
+
+			<span class="anterior"><a href="/">In?cio</a></span>&raquo;
+
+
+            <span class="anterior"><a href="/servidores/index.asp">Consulta de Servidores</a></span>&raquo;
+
+            <span class="atual"><a href="/servidores/Servidor-ListaServidores.asp?Ordem=2&paramDesc=1&Pagina=1">Servidores</a></span>
+
+		</span>
+</p>
+
+
+<!--Conte?do geral -->
+<div id="pagina">
+
+<div id="conteudo">
+
+<div id="titulo">
+    <h1>SERVIDORES DO PODER EXECUTIVO FEDERAL - POR NOME DO SERVIDOR</h1>
+</div>
+
+
+<div id="acoes">
+
+    <a href='http://arquivos.portaldatransparencia.gov.br/PortalTransparenciaEscolheTipoDePlanilha.asp?origem=Servidores&Planilha=0'
+       onclick="javascript: window.open('http://arquivos.portaldatransparencia.gov.br/PortalTransparenciaEscolheTipoDePlanilha.asp?origem=Servidores&Planilha=0&fechar=1','_blank','width=420,height=250,resizable=yes,menubar=no,status=yes'); return false;">
+        baixar mais dados&nbsp;<img src="/images/icone-salvar.png" alt="baixar mais dados"/></a>
+
+    <!-- Sublinhado simulado via javascript para IE6; para outros navegadores, o css resolve isso. -->
+	<span
+            onclick="javascript: print();"
+            onkeypress="javascript: if (checkKey(event,13)) print ();"
+            onmouseover="javascript: this.style.textDecoration='underline'; this.style.cursor='pointer';"
+            onmouseout="javascript: this.style.textDecoration='none';">imprimir&nbsp;<img
+            src="/images/icone-imprimir.png" alt="imprimir"/>
+
+	</span>
+
+</div>
+
+
+<div id="listagem">
+
+<div id="ajudaListagem">
+    <p class="firstChild">Selecione o(a) &quot;Nome do servidor&quot; para obter o detalhamento do valor</p>
+
+    <p>Caso queira outra classifica??o, clique no t?tulo da coluna correspondente</p>
+</div>
+
+<table summary="Lista de Servidores">
+<tr class="firstChild">
+    <th scope="col" class="firstChild" style="width: 15%;">CPF</th>
+    <th scope="col" style="width: 22%;"><a href="?Ordem=2&amp;paramDesc=2&amp;Pagina=1"
+                                           title="Ordena por &quot;Nome do servidor&quot;">Nome do servidor</a></th>
+    <th scope="col" style="width: 22%;text-align: left;"><a href="?Ordem=3&amp;paramDesc=1&amp;Pagina=1"
+                                                            title="Ordena por &quot;?rg?o de lota??o&quot;">?rg?o de
+        lota??o</a></th>
+    <th scope="col" style="width: 22%;text-align: left;"><a href="?Ordem=4&amp;paramDesc=1&amp;Pagina=1"
+                                                            title="Ordena por &quot;?rg?o de exerc?cio&quot;">?rg?o de
+        exerc?cio</a></th>
+    <th scope="col" style="width: 16%;text-align: right;"><a href="?Ordem=5&amp;paramDesc=1&amp;Pagina=1"
+                                                             title="Ordena por &quot;Jornada de Trabalho&quot;">Jornada
+        de Trabalho</a></th>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.592.871-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1643847"> AALINE SEVERIANO DA SILVA </a></td>
+    <td style="text-align: left;">FUNDACAO UNIVERSIDADE DE BRASILIA</td>
+    <td style="text-align: left;">FUNDACAO UNIVERSIDADE DE BRASILIA</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.017.623-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1543121"> AARAO CARLOS LUZ MACAMBIRA </a></td>
+    <td style="text-align: left;">INSTITUTO FEDERAL DO CEARA</td>
+    <td style="text-align: left;">INSTITUTO FEDERAL DO CEARA</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.292.777-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1434278"> AARAO CAVALCANTE DE AMORIM </a></td>
+    <td style="text-align: left;">COMANDO DA MARINHA</td>
+    <td style="text-align: left;">COMANDO DA MARINHA</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.559.144-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1064980"> AARAO DE ANDRADE LIMA </a></td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DE CAMPINA GRANDE</td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DE CAMPINA GRANDE</td>
+    <td style="text-align: right;">DEDICACAO EXCLUSIVA</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.056.281-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1390697"> AARAO DIAMANTINO OLIVEIRA </a></td>
+    <td style="text-align: left;">BANCO CENTRAL DO BRASIL</td>
+    <td style="text-align: left;">BANCO CENTRAL DO BRASIL</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.116.132-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1394823"> AARAO FERREIRA LIMA NETO </a></td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DO PARA</td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DO PARA</td>
+    <td style="text-align: right;">DEDICACAO EXCLUSIVA</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.031.184-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1294722"> AARAO PEREIRA DE ARAUJO JUNIOR </a></td>
+    <td style="text-align: left;">INSTITUTO FEDERAL DA PARAIBA</td>
+    <td style="text-align: left;">INSTITUTO FEDERAL DA PARAIBA</td>
+    <td style="text-align: right;">DEDICACAO EXCLUSIVA</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.859.807-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1357862"> AARAO SOARES </a></td>
+    <td style="text-align: left;">FUNDACAO NACIONAL DE SAUDE</td>
+    <td style="text-align: left;">FUNDACAO NACIONAL DE SAUDE</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.086.942-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1684016"> AARAO TEIXEIRA DOS SANTOS </a></td>
+    <td style="text-align: left;">SUPERINTENDENCIA ZONA FRANCA DE MANAUS</td>
+    <td style="text-align: left;">SUPERINTENDENCIA ZONA FRANCA DE MANAUS</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.723.287-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1133662"> AARON FROEDE SANTOS </a></td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DO ESPIRITO SANTO</td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DO ESPIRITO SANTO</td>
+    <td style="text-align: right;">60 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.873.832-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1659455"> AARON JONATHAN EDWARDS </a></td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DE RORAIMA</td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DE RORAIMA</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.724.317-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1264401"> AARON SILVA DE LIMA </a></td>
+    <td style="text-align: left;">FUND. INST. BRASIL. GEOG. E ESTATISTICA</td>
+    <td style="text-align: left;">FUND. INST. BRASIL. GEOG. E ESTATISTICA</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.681.016-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1259106"> ABA ISRAEL COHEN PERSIANO </a></td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DE MINAS GERAIS</td>
+    <td style="text-align: left;">UNIVERSIDADE FEDERAL DE MINAS GERAIS</td>
+    <td style="text-align: right;">DEDICACAO EXCLUSIVA</td>
+</tr>
+
+
+<tr class="linhaPar">
+    <td class="firstChild"> ***.078.406-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1488275"> ABADIA BELCHIOR GOMES </a></td>
+    <td style="text-align: left;">FUNDACAO UNIV. FEDERAL DE UBERLANDIA</td>
+    <td style="text-align: left;">FUNDACAO UNIV. FEDERAL DE UBERLANDIA</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+<tr>
+    <td class="firstChild"> ***.834.461-**</td>
+    <td><a href="Servidor-DetalhaServidor.asp?IdServidor=1181741"> ABADIA CANDIDA LEMES </a></td>
+    <td style="text-align: left;">MINISTERIO DA SAUDE</td>
+    <td style="text-align: left;">ESTADOS / MUNICIPIOS / EMPRESAS</td>
+    <td style="text-align: right;">40 HORAS SEMANAIS</td>
+</tr>
+
+
+</table>
+
+</div>
+
+
+<script type="text/javascript" language="javascript" src="../../Recursos/helper.js"></script>
+<noscript></noscript>
+
+<form action="" name="formPesquisa" onsubmit="return false">
+
+    <div id="pesquisaListagem">
+
+
+        <label for="Pesquisa">Pesquisar:</label>
+        <input style="width: 20em;" maxlength="100" type="text" id="Pesquisa" name="Pesquisa" onfocus="this.select();"
+               onkeypress="if (checkKey(event,13)) pesquisa(document.formPesquisa.Pesquisa.value, 'NomeOuCpf' );"
+               value="Digite o nome, parte do nome ou CPF"/>
+        <input type="submit" value="ok" style="width:3em;"
+               onclick="pesquisa(document.formPesquisa.Pesquisa.value, 'NomeOuCpf' );"
+               onkeypress="if (checkKey(event,13)) pesquisa(document.formPesquisa.Pesquisa.value, 'NomeOuCpf' );"/>
+    </div>
+
+</form>
+<script type="text/javascript" language="javascript" src="../../Recursos/helper.js"></script>
+<noscript></noscript>
+
+<form action="" name="paginacao" onsubmit="return false">
+
+    <div id="paginacao">
+
+        <p class="paginaAtual">P?gina 1/41369</p>
+
+        <p>
+
+            &#171; Primeira |
+            &#8249; Anterior |
+
+            <a href="#" onclick="return navega(2);">Pr?xima &#8250;</a> |
+            <a href="#" onclick="return navega(41369);">?ltima &#187;</a> |
+
+
+            <label for="numeroPagina">P?gina:</label>
+
+            <input id="numeroPagina" type="text" style="width:7em;"
+                   value="n? p?gina" onfocus="this.select();"
+                   onkeypress="if (checkKey(event,13)) navega(document.paginacao.numeroPagina.value);"/>
+            <input type="submit" value="Ir" style="width:3.5em;"
+                   onclick="navega(document.paginacao.numeroPagina.value);"
+                   onkeypress="if (checkKey(event,13)) navega(document.paginacao.numeroPagina.value);"/>
+
+        </p>
+    </div>
+</form>
+<div id="avisos">
+    <p>
+        Recomenda-se visualizar em resolu??o 1024x768
+    </p>
+</div>
+
+
+</div>
+<!-- /conteudo -->
+</div>
+<!-- /pagina -->
+</div>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<noscript></noscript>
+<script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-1665737-12");
+    pageTracker._trackPageview();
+</script>
+<noscript></noscript>
+</body>
+</html>

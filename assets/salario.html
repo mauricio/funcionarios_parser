@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- intancia o include para obter a connection string -->
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+
+<head>
+    <title> Portal da Transparência - SERVIDORES DO PODER EXECUTIVO FEDERAL - POR NOME DO SERVIDOR </title>
+
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=iso-8859-1"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/geral.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/cabecalho.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/consultas.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/cabecalhoPrint.css" media="print"/>
+    <link rel="stylesheet" type="text/css" href="../css/consultasPrint.css" media="print"/>
+
+</head>
+
+<body>
+<div id="site">
+
+<script type="text/javascript" language="JavaScript">
+    if (window != top) top.location.href = location.href;
+
+    function comboChange(comoBox, usado) {
+        window.open(comoBox.options[comoBox.selectedIndex].value);
+        if (usado) comoBox.selectedIndex = 0;
+
+    }
+</script>
+
+<noscript>Script para abertura de nova janela</noscript>
+
+<div id="presidencia">
+
+    <a href="http://www.cgu.gov.br" target="_blank" style="float:left; width:64%">
+        <!-- style margin-bottom:-4px == HACK IE6 -->
+        <img src="/images/cgu_logo.gif" style="border-style: none; margin-bottom:-4px;"
+             alt="Presidência da Republica - Controladoria Geral da União"/>
+    </a>
+
+
+    <div style="float:left; width:23.5%;">
+        <select name="sltVoce" id="sltVoce" title="Paginas do Governo Federal" class="pr" tabindex="1"
+                onchange="comboChange(this,1)" size="1">
+            <option value="" selected="selected">Destaques do Governo</option>
+            <option value="http://www.brasil.gov.br">Portal do Governo Federal</option>
+            <option value="http://www.e.gov.br">Portal de Serviços do Governo</option>
+            <option value="http://www.agenciabrasil.gov.br">Portal da Agência de Notícias</option>
+            <option value="http://www.brasil.gov.br/emquestao">Em Questão</option>
+            <option value="http://www.fomezero.gov.br">Programa Fome Zero</option>
+        </select>
+    </div>
+
+    <!-- <a href="http://www.brasil.gov.br" target="_blank" style="float:left; width:12.5%;"> -->
+    <!-- style margin-bottom:-4px == HACK IE6 -->
+    <!-- <img src="/images/brasil.gif" style="margin-top:2px; margin-bottom:-4px;" alt="Brasil - Um pais de todos"/> -->
+    <!-- </a> -->
+
+</div>
+
+
+<!-- Testeira do Portal da Transparência -->
+<div id="logo">
+    <a href="http://www.portaldatransparencia.gov.br" title="Portal da Transparência">
+        <h1>
+            <img src="/images/bandeira.png" alt="Portal da Transparência do Governo Federal"/>
+        </h1>
+    </a>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+
+    function redirAcessoRapido() {
+
+        var sel = document.getElementById('linksAcessoRapido');
+        var opt = sel.options[sel.selectedIndex];
+
+        // Apenas redireciona se não for um link "fake" (#)
+        if (opt.value != "#") {
+            // Se possui um "+" indicando para abrir em nova janela...
+            if (opt.value.indexOf("+") == 0) {
+                window.open(opt.value.substring(1)); // ... abre em nova janela (desconsiderando o "+")
+            }
+            else // Se não possui...
+            {
+                window.location = opt.value; // ... abre na mesma janela
+            }
+        }
+
+    }
+
+</script>
+
+<!-- Combo de acesso rápido -->
+<div id="acesso-rapido">
+
+    <div class="conteudo">
+        <h2>
+            <label for="linksAcessoRapido">Acesso rápido</label>
+        </h2>
+        <select id="linksAcessoRapido">
+            <option value="#">Selecione...</option>
+            <optgroup label="CONSULTAS">
+                <option value="http://www.portaldatransparencia.gov.br/Despesas.asp">Despesas</option>
+                <option value="http://www.portaldatransparencia.gov.br/receitas">Receitas</option>
+                <option value="http://www.portaldatransparencia.gov.br/convenios">Convênios</option>
+                <option value="http://www.portaldatransparencia.gov.br/ceis">Empresas Sancionadas</option>
+                <option value="http://www.portaldatransparencia.gov.br/servidores">Servidores</option>
+            </optgroup>
+            <optgroup label="GRÁFICOS E DOWNLOADS">
+                <option value="http://www.portaldatransparencia.gov.br/planilhas/">Download de Consultas</option>
+                <option value="http://www.portaldatransparencia.gov.br/graficos/">Portal em Gráficos</option>
+            </optgroup>
+            <optgroup label="INFORMAÇÕES">
+                <option value="http://www.portaldatransparencia.gov.br/sobre">Sobre o Portal</option>
+                <option value="http://www.portaldatransparencia.gov.br/sobre/Origem.asp">Dados do Portal</option>
+                <option value="http://www.portaldatransparencia.gov.br/aprendaMais">Aprenda Mais</option>
+                <option value="http://www.portaldatransparencia.gov.br/noticias">Notícias</option>
+                <option value="http://www.portaldatransparencia.gov.br/controleSocial">Controle Social</option>
+                <option value="http://www.portaldatransparencia.gov.br/licitacoesecontratos/">Licitações e Contratos
+                </option>
+            </optgroup>
+            <optgroup label="SERVIÇOS">
+                <option value="http://www.portaldatransparencia.gov.br/convenios/ConveniosFormulario.asp">Informações
+                    sobre convênios
+                </option>
+                <option value="http://www.portaldatransparencia.gov.br/rede/">Rede de Transparência</option>
+                <option value="http://www1.transparencia.gov.br/">Páginas de Transparência</option>
+                <option value="http://br.transparencia.gov.br/">Estados e Municípios</option>
+                <option value="+http://www.cgu.gov.br/olhovivo/">Programa Olho Vivo</option>
+                <option value="+http://www.portalzinho.cgu.gov.br/">Portal Criança Cidadã</option>
+            </optgroup>
+        </select>
+        <a href="javascript: redirAcessoRapido();">OK</a>
+    </div>
+    <div class="borda"></div>
+</div>
+
+<!-- Links de navegação -->
+<div id="navegacao">
+    <ul>
+        <li><a href="http://www.portaldatransparencia.gov.br/faleConosco/">Fale conosco</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/glossario/">Glossário</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/faleConosco/Perguntas.asp">Perguntas Freqüentes</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/links/">Links</a> |</li>
+        <li><a href="http://www.portaldatransparencia.gov.br/manual/">Manual de Navegação</a></li>
+    </ul>
+</div>
+
+
+<p class="caminho">
+
+    <span class="rotulo">Você está em:</span>
+    <br/>
+		<span class="passos">
+
+			<span class="anterior"><a href="/">Início</a></span>&raquo;
+
+
+            <span class="anterior"><a href="/servidores/index.asp">Consulta de Servidores</a></span>&raquo;
+
+            <span class="anterior"><a href="/servidores/Servidor-ListaServidores.asp">Servidores</a></span>&raquo;
+
+            <span class="anterior"><a href="/servidores/Servidor-DetalhaServidor.asp?IdServidor=1643847">Ficha
+                Cadastral</a></span>&raquo;
+
+            <span class="atual"><a href="/servidores/Servidor-DetalhaRemuneracao.asp?Op=1&IdServidor=1643847">Remuneração</a></span>
+
+		</span>
+</p>
+
+
+<!--Conteúdo geral -->
+<div id="pagina">
+
+<div id="conteudo">
+
+<div id="titulo">
+
+    <h1>SERVIDORES DO PODER EXECUTIVO FEDERAL - POR NOME DO SERVIDOR</h1>
+
+</div>
+
+<div id="acoes">
+
+    <!-- Sublinhado simulado via javascript para IE6; para outros navegadores, o css resolve isso. -->
+	<span
+            onclick="javascript: print();"
+            onkeypress="javascript: if (checkKey(event,13)) print ();"
+            onmouseover="javascript: this.style.textDecoration='underline'; this.style.cursor='pointer';"
+            onmouseout="javascript: this.style.textDecoration='none';"
+            >
+				imprimir&nbsp;<img src="/images/icone-imprimir.png" alt="imprimir"/>
+	</span>
+
+</div>
+
+<div id="resumo">
+
+
+    <table summary="Identificação do Servidor" border="1" width="80%">
+        <caption style='display:none;'>Resumo da Consulta</caption>
+        <thead>
+        <tr>
+            <th>Descrição</th>
+            <th colspan="2" align="left">Valor</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr>
+            <td class="firstChild" width="10%">
+                <nobr> Nome:</nobr>
+            </td>
+            <td class="colunaValor" style="text-align: left;">
+                AALINE SEVERIANO DA SILVA
+            </td>
+        </tr>
+
+        <tr>
+            <td class="firstChild" width="10%">
+                <nobr> CPF:</nobr>
+            </td>
+            <td class="colunaValor" style="text-align: left;">
+                ***.592.871-**
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+
+<div id="navegacaomeses">
+
+
+    <a href="/servidores/Servidor-DetalhaRemuneracao.asp?IdServidor=1643847&Ano=2012&Mes=5"> Maio/2012 </a>
+
+
+</div>
+
+<div id="listagemConvenios">
+
+
+    <table>
+
+        <!-- cabecalho da tabela -->
+
+        <thead>
+
+        <tr class="remuneracaohead1">
+
+            <th colspan="4" style="width:100%;" class="" title="Ordena por &quot;Objeto&quot;">Mês de Referência: Maio
+                de 2012
+            </th>
+
+        </tr>
+
+
+        <tr class="remuneracaohead2">
+
+            <th colspan="2" style="width:50%;" class="" title="Ordena por &quot;Objeto&quot;">Descrição</th>
+
+            <th style="width:30%;" class="colunaValor" title="Ordena por &quot;Valor Conveniado&quot;">Valor (R$)</th>
+
+            <th style="width:20%;" class=""></th>
+
+        </tr>
+
+
+        </thead>
+
+        <tbody>
+
+
+        <tr class="remuneracaolinhatotal">
+
+            <td colspan="2" class="">Remuneração básica
+
+            </td>
+
+            <td class="colunaValor"></td>
+
+            <td class="">&nbsp; </td>
+
+        </tr>
+
+
+        <tr class="remuneracaodetalhe">
+
+            <td style="width:2%;" class="">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+            <td style="width:45%;" class="">Remuneração básica bruta</td>
+
+            <td class="colunaValor">2.384,82</td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+
+        <tr class="remuneracaodetalhe">
+
+            <td colspan="2" class="">&nbsp; </td>
+
+            <td class="colunaValor">&nbsp; </td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+
+        <tr class="remuneracaodescontototal">
+
+            <td colspan="2" class="">Deduções obrigatórias (-)</td>
+
+            <td class="colunaValor"></td>
+
+            <td class="">&nbsp; </td>
+
+        </tr>
+
+        <tr class="remuneracaodesconto">
+
+            <td class="">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+            <td class="">IRRF (Imposto de Renda Retido na Fonte)</td>
+
+            <td class="colunaValor">0,00</td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+        <tr class="remuneracaodesconto">
+
+            <td class="">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+            <td class="">PSS/RPGS (Previdência Oficial)</td>
+
+            <td class="colunaValor">-262,33</td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+
+        <tr class="remuneracaodetalhe">
+
+            <td colspan="2" class="">&nbsp; </td>
+
+            <td class="colunaValor">&nbsp; </td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+        <tr class="remuneracaolinhatotalliquida">
+
+            <td colspan="2" class="">REMUNERAÇÃO APÓS DEDUÇÕES OBRIGATÓRIAS</td>
+
+            <td class="colunaValor">2.122,49</td>
+
+            <td class="">&nbsp; </td>
+
+        </tr>
+
+        <tr class="remuneracaodetalhe">
+
+            <td colspan="2" class="">&nbsp; </td>
+
+            <td class="colunaValor">&nbsp; </td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+        <tr class="remuneracaolinhatotal">
+
+            <td colspan="2" class="">Verbas indenizatórias</td>
+
+            <td class="colunaValor">(*)</td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+        <tr class="remuneracaodetalhe">
+
+            <td colspan="2" class="">&nbsp; </td>
+
+            <td class="colunaValor">&nbsp; </td>
+
+            <td class="">&nbsp; </td>
+        </tr>
+
+
+        </tbody>
+
+    </table>
+    </br>
+
+
+</div>
+
+</br>
+
+<p>* Dados de verbas indenizatórias serão publicados a partir de 30 de agosto de 2012</p>
+
+</br>
+
+
+</br>
+
+<p id="rodaperemuneracao">Atenção: os valores efetivamente recebidos pelo servidor no mês de maio podem ser inferiores
+    aos ora divulgados, por não estarem aqui demonstrados os descontos pessoais ou extraordinários. À exceção dos
+    descontos pessoais (tais como pensões e consignações), que, por sua natureza, não podem ser divulgados, os demais
+    passarão a ser explicitados na próxima folha de pagamento, quando já estarão implementados no Portal da
+    Transparência.</p>
+
+</br>
+
+
+</br>
+
+<div id="saibamais">
+    <table>
+        <caption style="font-size: 14px; font-weight: bold;"><H3>&nbsp;Saiba Mais</H3></caption>
+        <tr>
+            <td><br/><a style="color: blue;" href="SAIBA MAIS.pdf" target="_blank"
+                        title="Entenda a consulta e conheça os itens que compõem a remuneração">&nbsp;<img
+                    src="../images/marcador-bolinha-cinza.gif" alt="marcador.gif"/>&nbsp;Entenda a consulta e conheça os
+                itens que compõem a remuneração</a></td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="avisos">
+    <p>
+        Recomenda-se visualizar em resolução 1024x768
+    </p>
+</div>
+
+
+</div>
+<!-- /conteudo -->
+</div>
+</div>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<noscript></noscript>
+<script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-1665737-12");
+    pageTracker._trackPageview();
+</script>
+<noscript></noscript>
+</body>
+</html>
+
